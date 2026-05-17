@@ -49,7 +49,7 @@ function EditCreator() {
             [field]: value
         }))
     }
-    return <form onSubmit={handleSubmit}>
+    return <form onSubmit={handleSubmit} class="creator-form">
         <label htmlFor="name">Name</label>
         <input type="text" id="name" value={creator?.name ?? ""} onChange={(e) => setCreatorField("name", e.target.value)} required />
 

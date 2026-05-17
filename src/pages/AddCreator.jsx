@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import { supabase } from '../client.js';
+import { useNavigate } from 'react-router-dom';
 function AddCreator() {
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { data, error } = await supabase.from('creators').insert({
@@ -12,13 +14,16 @@ function AddCreator() {
 
         if (error)
             throw new Error(JSON.stringify(error))
+
+        navigate('/');
+
     }
     const name = useRef()
     const url = useRef()
     const description = useRef()
     const imageURL = useRef()
 
-    return <form onSubmit={handleSubmit}>
+    return <form onSubmit={handleSubmit} class="creator-form">
         <label htmlFor="name">Name</label>
         <input type="text" id="name" ref={name} required />
 

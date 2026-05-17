@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom"
 function Card({ id, name, url, description, imageURL }) {
     const navigate = useNavigate()
+
     return <div className="creator"
         onClick={() => navigate(`/creator/view/${id}`)}
     >
         <p>{name}</p>
-        <a href={url}>{url}</a>
+        <a href={url} onClick={(e) => e.stopPropagation()}>{url}</a>
         <p>{description}</p>
         <img src={imageURL} alt={`Image of ${name}`} />
         <button onClick={(e) => {
